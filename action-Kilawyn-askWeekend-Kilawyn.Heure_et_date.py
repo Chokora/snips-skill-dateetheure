@@ -43,10 +43,10 @@ def action_wrapper(hermes, intentMessage, conf):
     import datetime
     import random
 
-    now = datetime.date.today()
-    counter = (6 - today.weekday())
+    today = datetime.date.today()
+    counter = (5-today.weekday())
     is_weekend = False
-    if counter >= 5:
+    if counter <= 0:
         is_weekend = True
     weekend_sentences = [
         "C'est parfait ! C'est le week-end.",
@@ -74,5 +74,5 @@ if __name__ == "__main__":
     config = toml.load(f)
     mqtt_opts = MqttOptions(username=config["snips-common"]["mqtt_username"], password=config["snips-common"]["mqtt_password"], broker_address=config["snips-common"]["mqtt"])
     with Hermes(mqtt_options=mqtt_opts) as h:
-        h.subscribe_intent("Kilawyn:askWeek", subscribe_intent_callback) \
+        h.subscribe_intent("Kilawyn:askWeekend", subscribe_intent_callback) \
          .start()
