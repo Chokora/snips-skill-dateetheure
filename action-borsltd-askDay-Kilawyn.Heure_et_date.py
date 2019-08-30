@@ -43,7 +43,7 @@ def action_wrapper(hermes, intentMessage, conf):
     import datetime
     
     now = datetime.datetime.now()
-    sentence = now.strftime("Nous sommes le %Y-%m-%d")
+    sentence = now.strftime("Nous sommes le %A %d %B %Y")
     
     hermes.publish_end_session(intentMessage.session_id, sentence)
     
