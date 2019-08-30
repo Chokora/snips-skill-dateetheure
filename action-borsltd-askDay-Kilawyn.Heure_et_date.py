@@ -41,6 +41,9 @@ def action_wrapper(hermes, intentMessage, conf):
     Refer to the documentation for further details. 
     """
     import datetime
+    import locale
+
+    locale.setlocale(locale.LC_TIME,'')
     
     now = datetime.datetime.now()
     sentence = now.strftime("Nous sommes le %A %d %B %Y")
