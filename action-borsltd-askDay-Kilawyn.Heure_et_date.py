@@ -46,7 +46,10 @@ def action_wrapper(hermes, intentMessage, conf):
     locale.setlocale(locale.LC_TIME,'')
     
     now = datetime.datetime.now()
-    sentence = now.strftime("Nous sommes le %A %d %B %Y")
+    if now.date().day == 1:
+        sentence = now.strftime("Nous sommes le %A premier %B %Y")
+    else:
+        sentence = now.strftime("Nous sommes le %A %-d %B %Y")
     
     hermes.publish_end_session(intentMessage.session_id, sentence)
     
